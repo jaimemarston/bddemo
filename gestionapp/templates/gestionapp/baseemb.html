@@ -1,0 +1,44 @@
+<html>
+<head>
+
+<style>
+    @page {
+        size: a4 portrait;
+        @frame header_frame {           
+            -pdf-frame-content: header_content;
+            left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+        }
+        @frame content_frame {        
+       
+            left: 50pt; width: 512pt; top: 90pt; height: 652pt;
+            -pdf-frame-border: 1;
+        }
+        @frame footer_frame {          
+            -pdf-frame-content: footer_content;
+            width: 512pt; top: 800pt; height: 60pt;
+        }
+    }
+
+</style>
+{% block extra_style %}{% endblock %} 
+</head>
+
+<body>
+    <div id="header_content">
+        {%block page_header%}
+        {%endblock%}
+    </div>
+
+    <div align="center" id="footer_content">
+        {%block page_foot%}
+        {%endblock%}
+    </div>
+
+    <div id="content"></div>
+        {%block page_content%}
+        {%endblock%}
+    </div>
+
+</body>
+
+</html>

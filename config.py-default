@@ -1,0 +1,18 @@
+DEBUG = False
+ALLOWED_HOSTS = ['marstoncloud.com','188.166.63.89','localhost','127.0.0.1']
+SECRET_KEY = 'l*)bi@k9_(ri0s&mxsz^-doolu&y_k@(zunqupdf=^c13cw73b'
+
+STATIC_URL = '/alitourstatic/'
+STATIC_ROOT = '/home/marston/alitour/static'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'alitour',
+        'USER': 'postgres',
+        'PASSWORD': '<pass>',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+

@@ -1,0 +1,297 @@
+{% extends "gestionapp/baseemb.html" %}
+{% load static %}
+{% block extra_style %}
+
+<style type="text/css">
+    html {
+        font-family: "Helvetica", "sans-serif";
+        color: #333333;
+    }
+
+    /* p {
+        margin: 0 0 6px 0;
+        font-size: 8pt;
+    } */
+
+    /* table {
+        line-height: 140%;
+        margin-bottom: 20px;
+        page-break-inside: avoid;
+    } */
+    .item-name {
+        border-color: white;
+        background-color: gainsboro;
+        margin-left: 5px;
+
+    }
+
+    table.bordered {
+        border-top: 0.1pt solid #999999;
+        border-bottom: 0.1pt solid #999999;
+    }
+
+    .noborder {
+        border: none;
+        margin-left: +5px;
+    }
+
+    tr,
+    td,
+    th {
+        border: 0.1pt solid #999999;
+    }
+
+    th {
+        font-size: 7pt;
+        border-bottom: 0.1pt solid #000000;
+        padding: 3px 0;
+        line-height: 1;
+        font-weight: bold;
+    }
+
+    td {
+        font-size: 7pt;
+        vertical-align: top;
+        padding: 3px 0;
+    }
+
+    td:last-child {
+        padding-bottom: 0;
+    }
+
+    .column-cantidad {
+        text-align: right;
+        margin-right: +5px;
+    }
+
+    .column-fechaini,
+    .column-horaini,
+    .column-pax,
+    .column-cantidad,
+    .column-imptotal {
+        text-align: right;
+        margin-right: +5px;
+    }
+
+    .column-desunimed,
+    .column-descripcion {
+        text-align: left;
+        margin-left: +5px;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .bottom-10 {
+        margin-bottom: 10px;
+    }
+
+    .bottom-20 {
+        margin-bottom: 20px;
+    }
+
+    .header {
+        color: #7f7f7f;
+        position: running(header)
+    }
+
+    .foot-1 {
+        font-size: 20px;
+        line-height: 1.5em;
+    }
+
+    .header-link {
+        font-weight: bold;
+        text-decoration: none;
+        color: #4F81BD;
+        font-size: 14px;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+        margin-left: -25px;
+    }
+
+    .logo img {
+        zoom: 60%;
+    }
+
+    .recipient {
+        margin-left: 12cm;
+    }
+
+    .main h1 {
+        margin: 18px 0 18px 0;
+        font-size: 250%;
+        font-weight: normal;
+        color: #4F81BD;
+    }
+
+    .main h3 {
+        margin: 18px 0 18px 0;
+        font-weight: normal;
+        color: #4F81BD;
+    }
+
+    .main h2 {
+        margin: 18px 0 6px 0;
+        font-size: 180%;
+        font-weight: normal;
+    }
+
+    .info {
+        border: 1px solid #4F81BD;
+        padding: 10px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .info a {
+        color: #4F81BD;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+{% block page_header %}
+<div id="page-header">
+    <div>
+        <p class="logo">
+            <img src="{% static 'img/logo.jpg' %}" width="650px" height="250px">
+        </p>
+        <p>
+            {{ 'Av Ricardo Palma 781' }} {{ 'Miraflores' }} <br />
+            {{ 'LIMA - PERU' }}<br />
+
+
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_content %}
+<table border="">
+    {% for field in headerset %}
+    <tbody>
+        <tr>
+            <th align="center" colspan="4">DOCUMENTO DE SOLICITUD DE SERVICIO DE TAXI</th>
+        </tr>
+
+        <tr>
+            <th colspan="3" ALIGN=RIGHT>Trip Ticket Number</th>
+            <td>{{field.numordserv}}</td>
+        </tr>
+    </tbody>
+    {% endfor %}
+    
+    <table border="">
+        
+        <tbody>
+            <tr>
+                <th align="center" colspan="8">Informacíon del Chofer/Driver's information</th>
+            </tr>
+            <tr>
+                <td colspan="2">Nombre/Apellido/DNI/Celular<br>Name/Last name/ID/Cellphone </td>
+                <th colspan="6">{{nombre_cliente}}</th>
+            </tr>
+        </tbody>
+        
+    </table>
+    <table border="">
+            <tbody>
+                <tr>
+                    <th align="center" colspan="8">Informacíon del Vehículo/Vehicle's information</th>
+                </tr>
+                <tr>
+                    <td colspan="2">Placa/Marca/Modelo/Color<br>Tag#/Make/Model/Color </td>
+                    <th colspan="6">{{dato_vehiculo}}</th>
+                </tr>
+            </tbody>
+    </table>
+   
+</table>
+
+
+<table  border="">
+    <tbody>
+            
+        <tr>
+            <th align="center" colspan="7">Informacíon del Servicio </th>
+        </tr>
+        <thead>
+                <tr>
+        <th colspan="1" ALIGN=CENTER>Fecha del Servicio/Date<br>
+            (día-mes-año / dd-mm-yy)</th>
+        <th colspan="1" ALIGN=CENTER>Hora de Inicio<br>/Start time
+                (0:00 - 24:00)"</th>
+        <th colspan="1" ALIGN=CENTER>Hora de Termino<br> 
+                /End time<br>(0:00 - 24:00)</th>
+        <th colspan="1" ALIGN=CENTER>Total de Horas</th>
+        <th colspan="1" ALIGN=CENTER>Tipo de vehículo<br> 
+                /Type of vehicle</th>
+                <th colspan="1" ALIGN=CENTER>Precio S/.<br> 
+                        por unidad <br> 
+                        por hora<br></th>
+                    <th colspan="1" ALIGN=CENTER>Total S/.</th>
+        </tr>
+
+        </thead>
+        <tbody >
+                {% for fielddet in cotizacion %}
+                <tr  >
+        <td colspan="1" ALIGN=CENTER>{{fielddet.fechaini}}</td>
+        <td colspan="1" ALIGN=CENTER>{{fielddet.horaini}}</td>
+        <td colspan="1" ALIGN=CENTER>{{fielddet.horafin}}</td>
+        <td colspan="1" ALIGN=CENTER>{{fielddet.horafin}}</td>
+        <td colspan="1" ALIGN=CENTER>{{fielddet.precio}}</td>
+        <td colspan="1" ALIGN=CENTER>{{fielddet.precio}}</td>
+        <td colspan="1" ALIGN=CENTER>{{fielddet.imptotal}}</td>
+       </tr>
+       {% endfor %}
+        </tbody>
+       
+    </tbody>
+</table>
+
+<table  border="">
+    <tbody>
+        <tr>
+            <th >Punto de Recojo<br>Pick-up point </th>
+            <th>{{punto_recojo}}</th>
+            <th >Punto de Destino<br>Drop off point </th>
+            <th>{{lugar_destino}}</th>
+        </tr>
+    </tbody>
+    <!-- https://html.com/tables/rowspan-colspan/ -->
+    <table border="">
+        <tbody>
+            <tr>
+                <th align="center" colspan="9">Informacíon del Pasajero/Passenger's information</th>
+            </tr>
+            <tr>
+                <th colspan="2">Nombre de pasajero<br>passenger's names <br></th>
+                <td colspan="4">{{nombre_cliente}}</td>
+                <th>Seccion</th>
+                <th>Cellular</th>
+                <th>Observaciones</th>
+            </tr>
+        </tbody>
+    </table>
+    <table  border="">
+        <tbody>
+            <tr>
+                <th rowspan="1">Firma del Pasajero<br>Passenger's Signature<br></th>
+                <td colspan="5">{valor}</td>
+                <td>{valor}</td>
+                <td>{valor}</td>
+                <td>{valor}</td>
+            </tr>
+        </tbody>
+    </table>
+</table>
+
+{% endblock %}
