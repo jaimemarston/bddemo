@@ -148,15 +148,15 @@ USE_TZ = True
 #     os.path.join(PROJECT_DIR, 'static'),
 # ]
 STATICFILES_DIRS = [
-    '/home/marston/alitour/backend/static',
+    '/home/marston/demo/bddemo/static',
 ]
 
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = '/home/marston/alitour/static'
+STATIC_ROOT = '/home/marston/demo/static'
 
-STATIC_URL = '/alitourstatic/'
+STATIC_URL = '/demostatic/'
 
-MEDIA_URL = '/alitourmedia/'
+MEDIA_URL = '/demomedia/'
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
